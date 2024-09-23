@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    display: flex;
+    flex-direction: column; /* Alinha os filhos na coluna */
+    align-items: center; /* Centraliza horizontalmente */
+    min-height: 100vh; /* Garante que ocupe a altura total */
+}
+
+header {
+    background-color: #940202;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%; /* Garante que o header ocupe toda a largura */
+}
+
+main {
+    padding: 20px;
+    margin: auto;
+    max-width: 800px; /* Limita a largura do conteúdo */
+    width: 100%;
+}
+
+section {
+    background: #000000;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: white;
+    text-align: center; /* Centraliza os títulos */
+}
+
+form {
+    display: grid;
+    gap: 10px;
+}
+
+label {
+    font-weight: bold;
+    color: white;
+}
+
+input, textarea {
+    width: 10;
+ }
+ button {
+    background-color: #c90000;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%; /* Mantém a largura total do botão */
+    max-width: 500px; /* Limita a largura máxima do botão */
+    margin: 10px auto 0; /* Adiciona um pouco de margem acima do botão */
+}
+
+button:hover {
+    background-color: #ff0000;
+}

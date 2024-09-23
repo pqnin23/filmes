@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PirataFlix</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>PirataFlix</h1>
+    </header>
+    <main>
+        <section id="formulario">
+            <h2>Cadastro de Filme</h2>
+            <form id="filmeForm">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" required>
+
+                <label for="classificacao">Classificação:</label>
+                <input type="text" id="classificacao" required>
+
+                <label for="duracao">Duração (minutos):</label>
+                <input type="number" id="duracao" required>
+
+                <label for="genero">Gênero:</label>
+                <input type="text" id="genero" required>
+
+                <label for="ano">Ano de Lançamento:</label>
+                <input type="number" id="ano" required>
+
+                <label for="sinopse">Sinopse:</label>
+                <textarea id="sinopse" required></textarea>
+
+                <label for="imagem">URL da Imagem:</label>
+                <input type="text" id="imagem" required>
+
+                <label for="trailer">URL do Trailer:</label>
+                <input type="text" id="trailer" required>
+
+                <button type="submit">Cadastrar Filme</button>
+            </form>
+        </section>
+        <section id="busca">
+            <h2>Buscar Filme</h2>
+            <input type="text" id="buscaNome" placeholder="Digite o nome do filme">
+            <button onclick="buscarFilme()">Buscar</button>
+            <div id="resultadoBusca"></div>
+        </section>
+        <section id="listagem">
+            <h2>Filmes Cadastrados</h2>
+            <button onclick="listarFilmes()">Listar Todos os Filmes</button>
+            <div id="resultadoListagem"></div>
+        </section>
+        <section id="edicao">
+            <h2>Editar Filme</h2>
+            <input type="text" id="editaNome" placeholder="Digite o nome do filme para editar">
+            <button onclick="editarFilme()">Editar</button>
+        </section>
+        <section id="exclusao">
+            <h2>Excluir Filme</h2>
+            <input type="text" id="excluiNome" placeholder="Digite o nome do filme para excluir">
+            <button onclick="excluirFilme()">Excluir</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Plataforma de Streaming</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
