@@ -62,6 +62,49 @@
             <input type="text" id="excluiNome" placeholder="Digite o nome do filme para excluir">
             <button onclick="excluirFilme()">Excluir</button>
         </section>
+        <section id="filtros">
+            <h2>Filtros e Ordenação</h2>
+            <label for="filtroGenero">Filtrar por Gênero:</label>
+            <input type="text" id="filtroGenero">
+            
+            <label for="filtroAno">Filtrar por Ano de Lançamento:</label>
+            <input type="number" id="filtroAno">
+            
+            <label for="classificacao">Classificação:</label>
+<select id="classificacao" required>
+    <option value="">Selecione a classificação</option>
+    <option value="1">1 Estrela</option>
+    <option value="2">2 Estrelas</option>
+    <option value="3">3 Estrelas</option>
+    <option value="4">4 Estrelas</option>
+    <option value="5">5 Estrelas</option>
+</select>
+
+            
+            <label for="ordenacao">Ordenar por:</label>
+            <select id="ordenacao">
+                <option value="recentes">Mais Recentes</option>
+                <option value="avaliacao">Melhor Avaliados</option>
+            </select>
+            <button onclick="filtrarFilmes()">Filtrar</button>
+        </section>
+        
+        <section id="favoritos">
+            <h2>Filmes Favoritos</h2>
+            <input type="text" id="favoritoNome" placeholder="Nome do filme para adicionar aos favoritos">
+            <button onclick="adicionarFavorito()">Adicionar aos Favoritos</button>
+            <div id="resultadoFavoritos"></div>
+        </section>
+        
+        <section id="assistirDepois">
+            <h2>Lista para Assistir Depois</h2>
+            <input type="text" id="assistirNome" placeholder="Nome do filme para adicionar à lista">
+            <button onclick="adicionarAssistirDepois()">Adicionar à Lista</button>
+            <div id="resultadoAssistirDepois"></div>
+        </section>
+        
+        <button onclick="toggleModoEscuro()">Alternar Modo Escuro</button>
+        
     </main>
     <footer>
         <p>&copy; 2024 Plataforma de Streaming</p>

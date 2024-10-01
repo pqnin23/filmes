@@ -65,3 +65,15 @@ input, textarea {
 button:hover {
     background-color: #ff0000;
 }
+body.modo-escuro {
+    background-color: #121212;
+    color: white;
+}
+
+section {
+    background: #333; /* Fundo mais escuro */
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
