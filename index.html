@@ -41,68 +41,61 @@
                 <button type="submit">Cadastrar Filme</button>
             </form>
         </section>
+
         <section id="busca">
             <h2>Buscar Filme</h2>
             <input type="text" id="buscaNome" placeholder="Digite o nome do filme">
             <button onclick="buscarFilme()">Buscar</button>
             <div id="resultadoBusca"></div>
         </section>
+
         <section id="listagem">
             <h2>Filmes Cadastrados</h2>
             <button onclick="listarFilmes()">Listar Todos os Filmes</button>
             <div id="resultadoListagem"></div>
         </section>
+
         <section id="edicao">
             <h2>Editar Filme</h2>
             <input type="text" id="editaNome" placeholder="Digite o nome do filme para editar">
             <button onclick="editarFilme()">Editar</button>
         </section>
+
         <section id="exclusao">
             <h2>Excluir Filme</h2>
             <input type="text" id="excluiNome" placeholder="Digite o nome do filme para excluir">
             <button onclick="excluirFilme()">Excluir</button>
         </section>
-        <section id="filtros">
-            <h2>Filtros e Ordenação</h2>
-            <label for="filtroGenero">Filtrar por Gênero:</label>
-            <input type="text" id="filtroGenero">
-            
-            <label for="filtroAno">Filtrar por Ano de Lançamento:</label>
-            <input type="number" id="filtroAno">
-            
-            <label for="classificacao">Classificação:</label>
-<select id="classificacao" required>
-    <option value="">Selecione a classificação</option>
-    <option value="1">1 Estrela</option>
-    <option value="2">2 Estrelas</option>
-    <option value="3">3 Estrelas</option>
-    <option value="4">4 Estrelas</option>
-    <option value="5">5 Estrelas</option>
-</select>
 
-            
-            <label for="ordenacao">Ordenar por:</label>
-            <select id="ordenacao">
-                <option value="recentes">Mais Recentes</option>
-                <option value="avaliacao">Melhor Avaliados</option>
-            </select>
-            <button onclick="filtrarFilmes()">Filtrar</button>
-        </section>
-        
         <section id="favoritos">
             <h2>Filmes Favoritos</h2>
             <input type="text" id="favoritoNome" placeholder="Nome do filme para adicionar aos favoritos">
             <button onclick="adicionarFavorito()">Adicionar aos Favoritos</button>
             <div id="resultadoFavoritos"></div>
         </section>
-        
+
         <section id="assistirDepois">
             <h2>Lista para Assistir Depois</h2>
             <input type="text" id="assistirNome" placeholder="Nome do filme para adicionar à lista">
             <button onclick="adicionarAssistirDepois()">Adicionar à Lista</button>
             <div id="resultadoAssistirDepois"></div>
         </section>
-        
+
+        <section id="recomendacoes">
+            <h2>Recomendações de Filmes</h2>
+            <label for="generoRecomendacao">Escolha um Gênero:</label>
+            <select id="generoRecomendacao">
+                <option value="">Selecione um gênero</option>
+                <option value="Ação">Ação</option>
+                <option value="Comédia">Comédia</option>
+                <option value="Drama">Drama</option>
+                <option value="Fantasia">Fantasia</option>
+                <option value="Terror">Terror</option>
+            </select>
+            <button onclick="recomendarFilmes()">Recomendar</button>
+            <div id="resultadoRecomendacao"></div>
+        </section>
+
         <button onclick="toggleModoEscuro()">Alternar Modo Escuro</button>
         
     </main>

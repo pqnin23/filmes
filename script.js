@@ -25,6 +25,8 @@ class Filme {
 }
 
 const catalogo = [];
+const favoritos = [];
+const assistirDepois = [];
 
 document.getElementById('filmeForm').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -89,7 +91,13 @@ function editarFilme() {
         const novaSinopse = prompt('Nova sinopse (deixe em branco para não alterar):', filme.sinopse);
         if (novaSinopse) filme.sinopse = novaSinopse;
 
-        alert('Filme atualizado com sucesso!');
+        const novaImagem = prompt('Nova URL da imagem (deixe em branco para não alterar):', filme.imagem);
+        if (novaImagem) filme.imagem = novaImagem;
+
+        const novoTrailer = prompt('Nova URL do trailer (deixe em branco para não alterar):', filme.trailer);
+        if (novoTrailer) filme.trailer = novoTrailer;
+
+        alert('Filme editado com sucesso!');
     } else {
         alert('Filme não encontrado.');
     }
@@ -105,78 +113,55 @@ function excluirFilme() {
         alert('Filme não encontrado.');
     }
 }
-const comentarios = {};
-const favoritos = [];
-const assistirDepois = [];
 
-// Filtragem e ordenação de filmes
-function filtrarFilmes() {
-    const genero = document.getElementById('filtroGenero').value.toLowerCase();
-    const ano = parseInt(document.getElementById('filtroAno').value);
-    const classificacao = parseInt(document.getElementById('filtroClassificacao').value);
-    const ordenacao = document.getElementById('ordenacao').value;
-
-    let filmesFiltrados = catalogo.filter(f => 
-        (genero ? f.genero.toLowerCase().includes(genero) : true) &&
-        (ano ? f.anoLancamento === ano : true) &&
-        (classificacao ? f.classificacao >= classificacao : true)
-    );
-
-    if (ordenacao === 'recentes') {
-        filmesFiltrados.sort((a, b) => b.anoLancamento - a.anoLancamento);
-    } else if (ordenacao === 'avaliacao') {
-        filmesFiltrados.sort((a, b) => b.classificacao - a.classificacao);
-    }
-
-    const resultadoListagem = document.getElementById('resultadoListagem');
-    resultadoListagem.innerHTML = filmesFiltrados.length > 0 ? filmesFiltrados.map(filme => filme.toString()).join('<hr>') : 'Nenhum filme encontrado.';
-}
-
-// Sistema de recomendação
-function recomendarFilmes(generoPreferido) {
-    return catalogo.filter(f => f.genero.toLowerCase() === generoPreferido);
-}
-
-// Adicionar filme aos favoritos
 function adicionarFavorito() {
-    const nome = document.getElementById('favoritoNome').value;
-    const filme = catalogo.find(f => f.nome.toLowerCase() === nome.toLowerCase());
-
-    if (filme && !favoritos.includes(filme)) {
-        favoritos.push(filme);
-        alert('Filme adicionado aos favoritos!');
-        listarFavoritos();
+    const nomeFavorito = document.getElementById('favoritoNome').value;
+    const filme = catalogo.find(f => f.nome.toLowerCase() === nomeFavorito.toLowerCase());
+    if (filme) {
+        if (!favoritos.includes(filme)) {
+            favoritos.push(filme);
+            alert('Filme adicionado aos favoritos!');
+        } else {
+            alert('Filme já está nos favoritos.');
+        }
     } else {
-        alert(filme ? 'Filme já está na lista de favoritos.' : 'Filme não encontrado.');
+        alert('Filme não encontrado.');
     }
 }
 
-function listarFavoritos() {
-    const resultadoFavoritos = document.getElementById('resultadoFavoritos');
-    resultadoFavoritos.innerHTML = favoritos.length > 0 ? favoritos.map(filme => filme.toString()).join('<hr>') : 'Nenhum filme favorito.';
-}
-
-// Adicionar filme à lista de assistir depois
 function adicionarAssistirDepois() {
-    const nome = document.getElementById('assistirNome').value;
-    const filme = catalogo.find(f => f.nome.toLowerCase() === nome.toLowerCase());
-
-    if (filme && !assistirDepois.includes(filme)) {
-        assistirDepois.push(filme);
-        alert('Filme adicionado à lista para assistir depois!');
-        listarAssistirDepois();
+    const nomeAssistirDepois = document.getElementById('assistirNome').value;
+    const filme = catalogo.find(f => f.nome.toLowerCase() === nomeAssistirDepois.toLowerCase());
+    if (filme) {
+        if (!assistirDepois.includes(filme)) {
+            assistirDepois.push(filme);
+            alert('Filme adicionado à lista para assistir depois!');
+        } else {
+            alert('Filme já está na lista.');
+        }
     } else {
-        alert(filme ? 'Filme já está na lista para assistir depois.' : 'Filme não encontrado.');
+        alert('Filme não encontrado.');
     }
 }
 
-function listarAssistirDepois() {
-    const resultadoAssistirDepois = document.getElementById('resultadoAssistirDepois');
-    resultadoAssistirDepois.innerHTML = assistirDepois.length > 0 ? assistirDepois.map(filme => filme.toString()).join('<hr>') : 'Nenhum filme na lista para assistir depois.';
+function recomendarFilmes() {
+    const generoEscolhido = document.getElementById('generoRecomendacao').value;
+    const resultadoRecomendacao = document.getElementById('resultadoRecomendacao');
+
+    if (!generoEscolhido) {
+        resultadoRecomendacao.innerHTML = 'Por favor, selecione um gênero.';
+        return;
+    }
+
+    const filmesRecomendados = catalogo.filter(f => f.genero.toLowerCase() === generoEscolhido.toLowerCase());
+
+    if (filmesRecomendados.length > 0) {
+        resultadoRecomendacao.innerHTML = filmesRecomendados.map(filme => filme.toString()).join('<hr>');
+    } else {
+        resultadoRecomendacao.innerHTML = 'Nenhum filme encontrado para este gênero.';
+    }
 }
 
-// Alternar modo escuro
 function toggleModoEscuro() {
     document.body.classList.toggle('modo-escuro');
 }
-
